@@ -1,5 +1,5 @@
 export const config = {
-  PORT: process.env.PORT || 5000,
+  PORT: process.env.PORT || 5001,
   HOST: process.env.PORT || 'http://localhost',
   FRONTEND_URL: process.env.FRONTEND_URL || 'http://localhost:5000',
 
@@ -9,7 +9,7 @@ export const config = {
 
   JWT_SECRET: process.env.JWT_SECRET || 'uf7e^WaiUGFSA7fd8&^dadh',
   JWT_SECRET_ADMIN: process.env.JWT_SECRET_ADMIN || 'uf7e^WaiUGFSA7fd8&^dadhADMIN',
-  ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || '999999d',
+  ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || '20m',
 
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || '3fhfsdjfkf$$uIEFSHFKdf',
   JWT_REFRESH_SECRET_ADMIN: process.env.JWT_REFRESH_SECRET_ADMIN || '3fhfsdjfkf$$uIEFSHFKdfADMIN',

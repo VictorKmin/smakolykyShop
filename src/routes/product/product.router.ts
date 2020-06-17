@@ -1,10 +1,10 @@
 import {Router} from 'express';
 
 import {productController} from '../../controller';
-import {checkIsUserExistByEmailMiddleware} from '../../middleware';
+import {checkAccessTokenMiddleware} from '../../middleware';
 
 const router = Router();
 
-router.post('/', checkIsUserExistByEmailMiddleware , productController.createProduct);
+router.post('/', checkAccessTokenMiddleware, productController.createProduct);
 
 export const productRouter = router;

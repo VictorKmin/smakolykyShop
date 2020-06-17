@@ -15,7 +15,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIwNTg0NjQsImV4cCI6MTU5MjE0NDg2NH0.MJRqLpMY8yL70ADumXunjw3lWKjtt2Ozb4Ob2lvjs3M",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIwNjkzMjIsImV4cCI6MTU5MjE1NTcyMn0.nKa0bTIfUB7nHkxFMvQ2G6NSGec841aLlyzohREZNgI",
 								"type": "text"
 							}
 						],
@@ -136,6 +136,106 @@
 								"users",
 								"password",
 								"reset"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "user auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"82173873882Kfdsfsd\",\n    \"email\": \"victor.fzs10@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI0MjA5MTAsImV4cCI6MTU5MjQyMjExMH0.Z6E3uTOTEjKAfdfPjMb9_3nzQG0AmziSNk7jZ_q3nKo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI0MjE2MTAsImV4cCI6MTU5MjQyMjgxMH0.Rtpq0OkfXAKIrC8dW0INPZoShlndtV27A-pZ4Wiom0A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"prod\",\n    \"description\": \"xxx\",\n    \"type\": \"type\",\n    \"category\": \"dsafdsfsfdsf\",\n    \"price\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"products"
 							]
 						}
 					},

@@ -10,7 +10,7 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 
 import {config} from './config';
-import {authRouter, userRouter} from './routes';
+import {authRouter, productRouter, userRouter} from './routes';
 import {ResponseStatusCodesEnum} from './constatns';
 
 dotenv.config();
@@ -78,7 +78,7 @@ class App {
   private mountRoutes(): void {
     // this.app.use('/admin', adminRouter);
     this.app.use('/auth', authRouter);
-    // this.app.use('/products', productRouter);
+    this.app.use('/products', productRouter);
     this.app.use('/users', userRouter);
   }
 }

@@ -3,7 +3,7 @@ import {authController} from '../../controller';
 import {
   checkAccessTokenMiddleware,
   checkIsUserConfirmedMiddleware,
-  checkIsUserExistMiddleware,
+  checkIsUserExistByEmailMiddleware,
   emailPasswordValidatorMiddleware
 } from '../../middleware';
 
@@ -12,7 +12,7 @@ const router = Router();
 router.post(
   '/',
   emailPasswordValidatorMiddleware,
-  checkIsUserExistMiddleware,
+  checkIsUserExistByEmailMiddleware,
   checkIsUserConfirmedMiddleware,
   authController.authUser
 );

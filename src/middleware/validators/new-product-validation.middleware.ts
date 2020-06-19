@@ -1,5 +1,6 @@
 import {NextFunction, Request, Response} from 'express';
 import * as Joi from 'joi';
+
 import {newProductValidator} from '../../validators';
 import {ErrorHandler} from '../../errors';
 import {ResponseStatusCodesEnum} from '../../constatns';

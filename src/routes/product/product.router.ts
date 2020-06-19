@@ -1,10 +1,10 @@
 import {Router} from 'express';
 
 import {productController} from '../../controller';
-import {checkAccessTokenMiddleware} from '../../middleware';
+import {checkAccessTokenMiddleware, newProductValidationMiddleware} from '../../middleware';
 
 const router = Router();
 
-router.post('/', checkAccessTokenMiddleware, productController.createProduct);
+router.post('/', checkAccessTokenMiddleware, newProductValidationMiddleware, productController.createProduct);
 
 export const productRouter = router;

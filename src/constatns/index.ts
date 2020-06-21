@@ -1,4 +1,5 @@
 export * from './action.enum';
+export * from './cart-status.enum';
 export * from './gender.enum';
 export * from './logs.enum';
 export * from './product-type.enum';

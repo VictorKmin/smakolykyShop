@@ -7,6 +7,10 @@ class ProductService {
 
     return productToSave.save();
   }
+
+  findProductById(productId: string): Promise<IProduct | null> {
+    return ProductModel.findById(productId) as any;
+  }
 }
 
 export const productService = new ProductService();

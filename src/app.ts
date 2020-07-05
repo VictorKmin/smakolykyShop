@@ -8,10 +8,12 @@ import * as dotenv from 'dotenv';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
+import * as swaggerUI from 'swagger-ui-express';
 
 import {config} from './config';
 import {authRouter, productRouter, userRouter} from './routes';
 import {ResponseStatusCodesEnum} from './constatns';
+import * as swaggerDoc from './docs/swagger.json';
 
 dotenv.config();
 
@@ -80,6 +82,8 @@ class App {
     this.app.use('/auth', authRouter);
     this.app.use('/products', productRouter);
     this.app.use('/users', userRouter);
+
+    this.app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
   }
 }
 

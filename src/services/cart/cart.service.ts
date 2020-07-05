@@ -40,6 +40,14 @@ class CartService {
   updateCart(_id: string, cartToUpdate: ICart): Promise<ICart> {
     return CartModel.findOneAndUpdate({_id}, cartToUpdate, {new: true}) as any;
   }
+
+  getCartsByParams(findObject: Partial<ICart>): Promise<ICart[]> {
+    return CartModel.find(findObject) as any;
+  }
+
+  deleteCartById(_id: string) {
+    return CartModel.findByIdAndRemove(_id);
+  }
 }
 
 export const cartService = new CartService();

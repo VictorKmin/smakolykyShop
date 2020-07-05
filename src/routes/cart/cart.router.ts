@@ -1,13 +1,20 @@
 import {Router} from 'express';
 
 import {cartController} from '../../controller';
-import {checkAccessTokenMiddleware, checkIsUserConfirmedMiddleware, isProductExistsMiddleware} from '../../middleware';
+import {
+  addProductToCartValidatorMiddleware,
+  checkAccessTokenMiddleware,
+  checkIsUserConfirmedMiddleware,
+  isProductExistsMiddleware
+} from '../../middleware';
 
 const router = Router();
 
 router.use(checkAccessTokenMiddleware, checkIsUserConfirmedMiddleware);
 
+router.get('/proceed', cartController.getUserCart);
+
 router.use('/products/:productId', isProductExistsMiddleware);
-router.post('/products/:productId', cartController.addProductToCart);
+router.post('/products/:productId', addProductToCartValidatorMiddleware, cartController.addProductToCart);
 
 export const cartRouter = router;

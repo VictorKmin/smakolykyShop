@@ -11,6 +11,10 @@ class ProductService {
   findProductById(productId: string): Promise<IProduct | null> {
     return ProductModel.findById(productId) as any;
   }
+
+  updateProductById(_id: string, updateObject: Partial<IProduct>): Promise<IProduct> {
+    return ProductModel.findOneAndUpdate({_id}, updateObject, {new: true}) as any;
+  }
 }
 
 export const productService = new ProductService();

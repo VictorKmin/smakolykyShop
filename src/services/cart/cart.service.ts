@@ -38,7 +38,7 @@ class CartService {
   }
 
   updateCart(_id: string, cartToUpdate: ICart): Promise<ICart> {
-    return CartModel.updateOne({_id}, cartToUpdate) as any;
+    return CartModel.findOneAndUpdate({_id}, cartToUpdate, {new: true}) as any;
   }
 }
 

@@ -9,11 +9,11 @@ class ProductService {
   }
 
   findProductById(productId: string): Promise<IProduct | null> {
-    return ProductModel.findById(productId) as any;
+    return ProductModel.findById(productId).exec();
   }
 
-  updateProductById(_id: string, updateObject: Partial<IProduct>): Promise<IProduct> {
-    return ProductModel.findOneAndUpdate({_id}, updateObject, {new: true}) as any;
+  updateProductById(_id: string, updateObject: Partial<IProduct>): Promise<IProduct | null> {
+    return ProductModel.findOneAndUpdate({_id}, updateObject, {new: true}).exec();
   }
 }
 

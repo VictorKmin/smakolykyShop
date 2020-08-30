@@ -10,7 +10,7 @@ class CartService {
     return cartToCreate.save();
   }
 
-  addProductToCart(userCart: ICart, product: IProduct, productCount: number): Promise<ICart> {
+  addProductToCart(userCart: ICart, product: IProduct, productCount: number): Promise<ICart | null> {
     const productIndex = userCart.products.findIndex((value: ICartProduct) => {
       return product._id.toString() === value.productId.toString();
     });
@@ -30,19 +30,20 @@ class CartService {
     return this.updateCart(userCart._id, userCart);
   }
 
-  findUserProceedCart(userId: string): Promise<ICart> {
+  findUserProceedCart(userId: string): Promise<ICart | null> {
     return CartModel.findOne({
       status: CartStatusEnum.IN_PROGRESS,
       userId
-    }) as any;
+    })
+      .exec();
   }
 
-  updateCart(_id: string, cartToUpdate: ICart): Promise<ICart> {
-    return CartModel.findOneAndUpdate({_id}, cartToUpdate, {new: true}) as any;
+  updateCart(_id: string, cartToUpdate: ICart): Promise<ICart | null> {
+    return CartModel.findOneAndUpdate({_id}, cartToUpdate, {new: true}).exec();
   }
 
   getCartsByParams(findObject: Partial<ICart>): Promise<ICart[]> {
-    return CartModel.find(findObject) as any;
+    return CartModel.find(findObject).exec();
   }
 
   deleteCartById(_id: string) {

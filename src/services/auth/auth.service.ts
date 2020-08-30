@@ -18,7 +18,7 @@ class AuthService {
   }
 
   removeToken(removeObject: { accessToken?: string, refreshToken?: string }): Promise<IAccessToken | null> {
-    return AccessTokenModel.findOneAndDelete(removeObject) as any;
+    return AccessTokenModel.findOneAndDelete(removeObject).exec();
   }
 }
 

@@ -19,15 +19,15 @@ class UserService {
           tokens: tokenObject
         }
       }
-    ) as any;
+    ).exec();
   }
 
   updateUserByParams(params: Partial<IUser>, update: Partial<IUser>): Promise<IUser> {
-    return UserModel.updateOne(params, update, {new: true}) as any;
+    return UserModel.updateOne(params, update, {new: true}).exec();
   }
 
   findOneByParams(findObject: Partial<IUser>): Promise<IUser | null> {
-    return UserModel.findOne(findObject) as any;
+    return UserModel.findOne(findObject).exec();
   }
 
   findUserByActionToken(action: ActionEnum, token: string): Promise<IUser | null> {

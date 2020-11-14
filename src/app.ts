@@ -14,6 +14,7 @@ import {config} from './config';
 import {authRouter, cartRouter, productRouter, userRouter} from './routes';
 import {ResponseStatusCodesEnum} from './constatns';
 import * as swaggerDoc from './docs/swagger.json';
+import Sentry from './errors/sentry';
 
 dotenv.config();
 
@@ -39,9 +40,12 @@ class App {
     this.app.use(express.urlencoded({extended: true}));
 
     this.app.use(express.static(path.resolve((global as any).appRoot, 'public')));
+    this.app.use(Sentry.Handlers.requestHandler());
 
     this.mountRoutes();
     this.setupDB();
+
+    this.app.use(Sentry.Handlers.errorHandler());
 
     this.app.use(this.customErrorHandler);
 
@@ -55,6 +59,7 @@ class App {
   }
 
   private customErrorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
+    Sentry.captureException(err);
     res
       .status(err.status || ResponseStatusCodesEnum.SERVER)
       .json({

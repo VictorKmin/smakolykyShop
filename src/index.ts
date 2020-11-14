@@ -3,6 +3,7 @@ import * as http from 'http';
 import {app} from './app';
 import {config} from './config';
 import {cronJobRun} from './cron-jobs';
+import Sentry from './errors/sentry';
 
 const server = http.createServer(app);
 
@@ -19,9 +20,11 @@ process.on('SIGTERM', () => {
 });
 
 process.on('uncaughtException', error => {
+  Sentry.captureException(error);
   console.log(error);
 });
 
 process.on('unhandledRejection', error => {
+  Sentry.captureException(error);
   console.log(error);
 });

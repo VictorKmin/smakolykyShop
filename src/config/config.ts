@@ -32,5 +32,7 @@ export const config = {
   ROOT_EMAIL_PASSWORD: process.env.ROOT_EMAIL_PASSWORD || 'password',
   ROOT_EMAIL_SERVICE: process.env.ROOT_EMAIL_SERVICE || 'gmail',
 
-  SUPPORT_EMAIL: process.env.SUPPORT_EMAIL || 'mail'
+  SUPPORT_EMAIL: process.env.SUPPORT_EMAIL || 'mail',
+
+  SENTRY_DSN: process.env.SENTRY_DSN || ''
 };

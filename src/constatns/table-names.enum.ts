@@ -3,5 +3,6 @@ export enum TableNamesEnum {
   CART = 'carts',
   LOGS = 'logs',
   PRODUCTS = 'products',
+  STORE = 'store',
   USER = 'users'
 }

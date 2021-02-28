@@ -19,6 +19,10 @@ export const customErrors = {
     message: 'Wrong product count'
   },
 
+  BAD_REQUEST_NOT_VALID_FILE: {
+    message: 'Not valid file'
+  },
+
   //401
   UNAUTHORIZED_BAD_TOKEN: {
     message: 'Something wrong with token'

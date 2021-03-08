@@ -17,3 +17,13 @@ export interface IProduct {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IProductFilter {
+  title?: { $regex: string, $options: string };
+  priceGte?: { $gte: number };
+  priceLte?: { $lte: number };
+  category?: string;
+  tags?: string | string[];
+  hasDiscount?: boolean
+}
+

@@ -1,5 +1,5 @@
 import {ProductModel} from '../../database';
-import {IProduct} from '../../models';
+import {IProduct, IProductFilter} from '../../models';
 
 class ProductService {
   createProduct(product: IProduct) {
@@ -9,11 +9,21 @@ class ProductService {
   }
 
   findProductById(productId: string): Promise<IProduct | null> {
-    return ProductModel.findById(productId).exec();
+    return ProductModel.findById(productId).lean().exec();
+  }
+
+  findProducts(filterQuery: Partial<IProductFilter>, limit: number, page: number): Promise<IProduct[] | []> {
+    const skip = limit * (page - 1);
+
+    return ProductModel.find(filterQuery).limit(limit).skip(skip).lean().exec();
+  }
+
+  findProductsInternal(filterQuery: Partial<IProductFilter>): Promise<IProduct[] | []> {
+    return ProductModel.find(filterQuery).lean().exec();
   }
 
   updateProductById(_id: string, updateObject: Partial<IProduct>): Promise<IProduct | null> {
-    return ProductModel.findOneAndUpdate({_id}, updateObject, {new: true}).exec();
+    return ProductModel.findOneAndUpdate({_id}, updateObject, {new: true}).lean().exec();
   }
 }
 

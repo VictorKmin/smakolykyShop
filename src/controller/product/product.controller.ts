@@ -1,11 +1,10 @@
 import {NextFunction, Response} from 'express';
 
-import {csvParser} from '../../helpers';
+import {csvParser, productQueryBuilder} from '../../helpers';
 import {IRequestExtended, IUser} from '../../models';
 import {logService, productService} from '../../services';
 import {LogEnum} from '../../constatns';
 import {UploadedFile} from 'express-fileupload';
-import {productQueryBuilder} from "../../helpers/query-builders/product.query-builder";
 
 class ProductController {
   async createProduct(req: IRequestExtended, res: Response, next: NextFunction) {

@@ -1,7 +1,7 @@
 import {NextFunction, Response} from 'express';
 
 import {csvParser, productQueryBuilder} from '../../helpers';
-import {IRequestExtended, IUser} from '../../models';
+import {IProductFilterQuery, IRequestExtended, IUser} from '../../models';
 import {logService, productService} from '../../services';
 import {LogEnum} from '../../constatns';
 import {UploadedFile} from 'express-fileupload';
@@ -56,7 +56,7 @@ class ProductController {
   async getProducts(req: IRequestExtended, res: Response, next: NextFunction) {
     try {
       const {limit = 20, page = 1, filter} = req.query;
-      const filterQuery = productQueryBuilder(filter);
+      const filterQuery = productQueryBuilder(filter as Partial<IProductFilterQuery>);
 
       const products = await productService.findProducts(filterQuery, +limit, +page);
 

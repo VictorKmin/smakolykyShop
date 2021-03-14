@@ -20,10 +20,18 @@ export interface IProduct {
 
 export interface IProductFilter {
   title?: { $regex: string, $options: string };
-  priceGte?: { $gte: number };
-  priceLte?: { $lte: number };
+  price?: { $gte: number, $lte: number };
   category?: string;
   tags?: string | string[];
+  hasDiscount?: boolean
+}
+
+export interface IProductFilterQuery {
+  title?: string;
+  priceGte?: number;
+  priceLte?: number;
+  category?: string;
+  tags?: string
   hasDiscount?: boolean
 }
 

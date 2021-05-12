@@ -25,7 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.18",
     "node-cron": "^2.0.3",
-    "nodemailer": "^6.4.8",
+    "nodemailer": "^6.4.16",
     "pug": "^3.0.0",
     "swagger-ui-express": "^4.1.4"
   },
